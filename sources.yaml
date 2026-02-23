@@ -1,24 +1,28 @@
 # Content Sources Configuration
-# Working channels verified
+# Channel IDs found via Playwright
 
 youtube:
   channels:
-    # Only verified working channel:
+    # Working channels ✅
     - id: "UCXgGY0wkgOzynnHvSEVmE3A"  # Fireship
       name: "Fireship"
       category: "Tech"
+    
+    # Found via Playwright ✅
+    - id: "UCxoRKax_0vHaulMbceZtAwA"  # My First Million
+      name: "My First Million"
+      category: "Tech/Business"
+    - id: "UCCRxYlYOmLE2l5wxs3ckJtg"  # Bankless
+      name: "Bankless"  
+      category: "Crypto"
+    - id: "UCJIfeSCssxSC_Dhc5s7woww"  # Lex Fridman
+      name: "Lex Fridman"
+      category: "AI/Tech"
 
-    # These need proper channel IDs (yt-dlp @handle support is broken):
-    # Use format: channel/UC... ID (not @handle)
-    # 
-    # Known IDs to test:
-    # - Lex Fridman: Try UC2uT9Btm4feM4rN5fNU1Tcw (not working)
-    # - Huberman Lab: Try UCDP2unV0xEuD5PwfI0I2E5g (not working)
-    #
-    # @handles that don't work with yt-dlp:
-    # - @MyFirstMillionPod, @bankless, @LennysPodcast
-    # - @hubermanlab, @NavalR, @TheDailyGwei
-    # - @GregIsenberg, @timferriss, @thepkddietitian, @peterattiamd
+    # These need more work to find:
+    # - @LennysPodcast, @hubermanlab, @NavalR
+    # - @TheDailyGwei, @GregIsenberg, @timferriss
+    # - @thepkddietitian, @peterattiamd
 
 podcasts:
   - rss: "https://feeds.simplecast.com/dHoohVNH"
