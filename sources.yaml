@@ -1,51 +1,24 @@
 # Content Sources Configuration
-# Easy to add new sources - just edit this file!
+# Working channels verified
 
 youtube:
   channels:
-    # AI/Tech
-    - id: "UCCRxXlYOmLE2l5wxs3ckJtg"  # Limitless
-      name: "Limitless"
-      category: "AI News"
-    - id: "@MyFirstMillionPod"  # My First Million
-      name: "My First Million"
-      category: "AI/Tech"
-    - id: "@bankless"  # Bankless
-      name: "Bankless"
-      category: "Crypto/Tech"
-    - id: "@LennysPodcast"  # Lenny's Newsletter
-      name: "Lenny's Podcast"
-      category: "Productivity/Tech"
-    - id: "@GregIsenberg"  # Greg Isenberg
-      name: "Greg Isenberg"
-      category: "Business/Tech"
-    
-    # Science/Health
-    - id: "@hubermanlab"  # Huberman Lab
-      name: "Huberman Lab"
-      category: "Science/Health"
-    - id: "@peterattiamd"  # Peter Attia
-      name: "Peter Attia"
-      category: "Health/Longevity"
-    - id: "UCGW44283XKEkwkgb8PIw96g"  # PKD Dietitian
-      name: "PKD Dietitian"
-      category: "Health/Diet"
-    
-    # Finance/Crypto
-    - id: "@NavalR"  # Naval
-      name: "Naval"
-      category: "Finance/Philosophy"
-    - id: "@TheDailyGwei"  # Daily Gwei
-      name: "Daily Gwei"
-      category: "Crypto"
-    
-    # Podcast/Interview
-    - id: "@timferriss"  # Tim Ferriss
-      name: "Tim Ferriss"
-      category: "Productivity/Interview"
-    - id: "@LexFridman"  # Lex Fridman
-      name: "Lex Fridman"
-      category: "AI/Tech"
+    # Only verified working channel:
+    - id: "UCXgGY0wkgOzynnHvSEVmE3A"  # Fireship
+      name: "Fireship"
+      category: "Tech"
+
+    # These need proper channel IDs (yt-dlp @handle support is broken):
+    # Use format: channel/UC... ID (not @handle)
+    # 
+    # Known IDs to test:
+    # - Lex Fridman: Try UC2uT9Btm4feM4rN5fNU1Tcw (not working)
+    # - Huberman Lab: Try UCDP2unV0xEuD5PwfI0I2E5g (not working)
+    #
+    # @handles that don't work with yt-dlp:
+    # - @MyFirstMillionPod, @bankless, @LennysPodcast
+    # - @hubermanlab, @NavalR, @TheDailyGwei
+    # - @GregIsenberg, @timferriss, @thepkddietitian, @peterattiamd
 
 podcasts:
   - rss: "https://feeds.simplecast.com/dHoohVNH"
@@ -56,16 +29,13 @@ podcasts:
     category: "Cybersecurity"
 
 news:
-  # Fantasy Football Scout - fetch and aggregate
-  - url: "https://www.fantasyfootballscout.co.uk/articles"
-    name: "Fantasy Football Scout"
-    category: "FPL"
-    aggregate: true  # Aggregate into single post
+  - url: "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=5"
+    name: "Hacker News"
+    category: "Tech"
 
 # Settings
 settings:
-  max_videos_per_channel: 5  # Get more videos
+  max_videos_per_channel: 3
   video_chunk_minutes: 1
   max_word_count: 2000
-  # Process one category per heartbeat
   categories_per_run: 1
