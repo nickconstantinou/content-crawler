@@ -3,18 +3,49 @@
 
 youtube:
   channels:
+    # AI/Tech
     - id: "UCCRxXlYOmLE2l5wxs3ckJtg"  # Limitless
       name: "Limitless"
       category: "AI News"
-    - id: "UCXgGY0wkgOzynnHvSEVmE3A"  # Fireship
-      name: "Fireship"
-      category: "Tech"
-    - id: "@LexFridman"  # Lex Fridman
-      name: "Lex Fridman"
+    - id: "@MyFirstMillionPod"  # My First Million
+      name: "My First Million"
       category: "AI/Tech"
+    - id: "@bankless"  # Bankless
+      name: "Bankless"
+      category: "Crypto/Tech"
+    - id: "@LennysPodcast"  # Lenny's Newsletter
+      name: "Lenny's Podcast"
+      category: "Productivity/Tech"
+    - id: "@GregIsenberg"  # Greg Isenberg
+      name: "Greg Isenberg"
+      category: "Business/Tech"
+    
+    # Science/Health
     - id: "@hubermanlab"  # Huberman Lab
       name: "Huberman Lab"
       category: "Science/Health"
+    - id: "@peterattiamd"  # Peter Attia
+      name: "Peter Attia"
+      category: "Health/Longevity"
+    - id: "UCGW44283XKEkwkgb8PIw96g"  # PKD Dietitian
+      name: "PKD Dietitian"
+      category: "Health/Diet"
+    
+    # Finance/Crypto
+    - id: "@NavalR"  # Naval
+      name: "Naval"
+      category: "Finance/Philosophy"
+    - id: "@TheDailyGwei"  # Daily Gwei
+      name: "Daily Gwei"
+      category: "Crypto"
+    
+    # Podcast/Interview
+    - id: "@timferriss"  # Tim Ferriss
+      name: "Tim Ferriss"
+      category: "Productivity/Interview"
+    - id: "@LexFridman"  # Lex Fridman
+      name: "Lex Fridman"
+      category: "AI/Tech"
 
 podcasts:
   - rss: "https://feeds.simplecast.com/dHoohVNH"
@@ -25,14 +56,16 @@ podcasts:
     category: "Cybersecurity"
 
 news:
-  # AI Secret - RSS not available (site behind paywall)
-  # - rss: "https://aisecret.us/rss"
-  - url: "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=5"
-    name: "Hacker News"
-    category: "Tech"
+  # Fantasy Football Scout - fetch and aggregate
+  - url: "https://www.fantasyfootballscout.co.uk/articles"
+    name: "Fantasy Football Scout"
+    category: "FPL"
+    aggregate: true  # Aggregate into single post
 
 # Settings
 settings:
-  max_videos_per_channel: 3
-  video_chunk_minutes: 1  # Short chunks for faster transcription
-  max_word_count: 2000     # Max words for summary
+  max_videos_per_channel: 5  # Get more videos
+  video_chunk_minutes: 1
+  max_word_count: 2000
+  # Process one category per heartbeat
+  categories_per_run: 1
