@@ -198,8 +198,8 @@ def run_one_category():
         # Save post
         blog_generator.save_post(filename, html)
         
-        # Update posts.js
-        url_path = f"blog/_posts/{filename}"
+        # Update posts.js - URL should be in ROOT, not blog/_posts/
+        url_path = filename
         updater.add_to_posts_js(
             title=f"{category} Roundup",
             url=url_path,

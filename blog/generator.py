@@ -7,7 +7,7 @@ from datetime import datetime
 from typing import Dict, Optional
 
 BLOG_DIR = Path("/home/openclaw/openclaw-workspace/personal-blog")
-POSTS_DIR = BLOG_DIR / "blog" / "_posts"
+POSTS_DIR = BLOG_DIR  # Posts go in ROOT, not blog/_posts/
 
 
 def slugify(text: str) -> str:
