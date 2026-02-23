@@ -5,6 +5,27 @@ import json
 import sys
 from pathlib import Path
 
+try:
+    import markdown
+    HAS_MARKDOWN = True
+except ImportError:
+    HAS_MARKDOWN = False
+
+
+def convert_markdown_to_html(text: str) -> str:
+    """Convert markdown text to HTML"""
+    if not HAS_MARKDOWN:
+        # Fallback: simple replacements
+        text = text.replace('# ', '<h1>').replace('\n# ', '</h1><h1>')
+        text = text.replace('## ', '<h2>').replace('\n## ', '</h2><h2>')
+        text = text.replace('### ', '<h3>').replace('\n### ', '</h3><h3>')
+        text = text.replace('**', '<strong>', 1).replace('**', '</strong>')
+        text = text.replace('- ', '<li>')
+        text = text.replace('\n\n', '</p><p>')
+        return f'<p>{text}</p>'
+    
+    return markdown.markdown(text, extensions=['extra', 'nl2br'])
+
 # MiniMax API configuration
 MINIMAX_API_KEY = os.getenv("MINIMAX_API_KEY", "")
 MINIMAX_BASE_URL = "https://api.minimax.io/anthropic/v1"

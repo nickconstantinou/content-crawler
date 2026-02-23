@@ -17,9 +17,17 @@ def verify_post(url: str) -> bool:
     """Verify a single post loads correctly"""
     try:
         from playwright.sync_api import sync_playwright
+        import os
         
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            # Use system Chrome
+            chrome_path = "/usr/bin/google-chrome-stable"
+            
+            browser = p.chromium.launch(
+                headless=True,
+                executable_path=chrome_path if os.path.exists(chrome_path) else None,
+                args=['--no-sandbox', '--disable-setuid-sandbox']
+            )
             page = browser.new_page()
             
             # Try to load the post

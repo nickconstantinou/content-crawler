@@ -6,6 +6,10 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, Optional
 
+# Add parent to path for markdown conversion
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from summarizer.generator import convert_markdown_to_html
+
 BLOG_DIR = Path("/home/openclaw/openclaw-workspace/personal-blog")
 POSTS_DIR = BLOG_DIR  # Posts go in ROOT, not blog/_posts/
 
@@ -27,7 +31,8 @@ def generate_youtube_post(title: str, summary: str, category: str, video_url: st
     slug = slugify(title)
     filename = f"{date}-{slug}.html"
     
-    # Extract first paragraph as excerpt
+    # Convert markdown summary to HTML
+    summary_html = convert_markdown_to_html(summary)
     paragraphs = summary.split('\n\n')
     excerpt = paragraphs[0][:200] if paragraphs else summary[:200]
     
@@ -52,7 +57,12 @@ def generate_youtube_post(title: str, summary: str, category: str, video_url: st
     article {{ padding: 32px 0; }}
     .meta {{ font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }}
     h1 {{ font-size: 36px; margin-bottom: 24px; color: var(--primary); }}
+    h2 {{ font-size: 24px; margin-top: 24px; margin-bottom: 12px; color: var(--primary); }}
+    h3 {{ font-size: 18px; margin-top: 20px; margin-bottom: 8px; color: var(--primary); }}
     p {{ margin-bottom: 16px; }}
+    ul, ol {{ margin-bottom: 16px; padding-left: 24px; }}
+    li {{ margin-bottom: 8px; }}
+    strong {{ font-weight: 600; color: var(--primary); }}
     .video-wrapper {{ position: relative; padding-bottom: 56.25%; margin-bottom: 24px; }}
     .video-wrapper iframe {{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; }}
     footer {{ padding: 32px 0; border-top: 1px solid var(--border); text-align: center; margin-top: 40px; }}
@@ -75,7 +85,7 @@ def generate_youtube_post(title: str, summary: str, category: str, video_url: st
         <iframe src="https://www.youtube.com/embed/{video_url.split('=')[-1]}" frameborder="0" allowfullscreen></iframe>
       </div>
       
-      {summary}
+      {summary_html}
       
     </article>
   </div>
