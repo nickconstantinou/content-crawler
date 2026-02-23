@@ -3,12 +3,18 @@
 
 youtube:
   channels:
-    - id: "UCCRxYlYOmLE2l5wxs3ckJtg"  # Limitless
+    - id: "UCCRxXlYOmLE2l5wxs3ckJtg"  # Limitless
       name: "Limitless"
       category: "AI News"
     - id: "UCXgGY0wkgOzynnHvSEVmE3A"  # Fireship
       name: "Fireship"
       category: "Tech"
+    - id: "@LexFridman"  # Lex Fridman
+      name: "Lex Fridman"
+      category: "AI/Tech"
+    - id: "@hubermanlab"  # Huberman Lab
+      name: "Huberman Lab"
+      category: "Science/Health"
 
 podcasts:
   - rss: "https://feeds.simplecast.com/dHoohVNH"
@@ -19,9 +25,8 @@ podcasts:
     category: "Cybersecurity"
 
 news:
-  - rss: "https://aisecret.us/rss"
-    name: "AI Secret"
-    category: "AI News"
+  # AI Secret - RSS not available (site behind paywall)
+  # - rss: "https://aisecret.us/rss"
   - url: "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=5"
     name: "Hacker News"
     category: "Tech"
@@ -29,5 +34,5 @@ news:
 # Settings
 settings:
   max_videos_per_channel: 3
-  video_chunk_minutes: 10  # Chunk videos into 10min segments
+  video_chunk_minutes: 1  # Short chunks for faster transcription
   max_word_count: 2000     # Max words for summary
