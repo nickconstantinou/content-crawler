@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-YAML_FILE = Path(__file__).parent / "sources.yaml"
+YAML_FILE = Path(__file__).parent.parent / "sources.yaml"
 
 
 def load_sources():
@@ -22,28 +22,33 @@ def get_latest_videos(channel_id: str, max_results: int = 3) -> list:
         result = subprocess.run([
             "yt-dlp",
             "--flat-playlist",
+            "--playlist-end", str(max_results),
             "-J",
-            f"https://www.youtube.com/channel/{channel_id}"
-        ], capture_output=True, text=True, timeout=60)
+            f"https://www.youtube.com/channel/{channel_id}/videos"
+        ], capture_output=True, text=True, timeout=120)
         
         if result.returncode != 0:
-            print(f"Error fetching channel {channel_id}: {result.stderr}")
+            print(f"Error fetching channel {channel_id}: {result.stderr[:200]}")
             return []
         
         data = json.loads(result.stdout)
-        entries = data.get("entries", [])[:max_results]
+        entries = data.get("entries", [])
         
         videos = []
         for entry in entries:
-            videos.append({
-                "id": entry.get("id"),
-                "title": entry.get("title"),
-                "url": f"https://www.youtube.com/watch?v={entry.get('id')}",
-                "upload_date": entry.get("upload_date"),
-                "duration": entry.get("duration"),
-            })
+            video_id = entry.get("id")
+            title = entry.get("title")
+            
+            if video_id and title and title != "[Private video]":
+                videos.append({
+                    "id": video_id,
+                    "title": title,
+                    "url": f"https://www.youtube.com/watch?v={video_id}",
+                    "upload_date": entry.get("upload_date"),
+                    "duration": entry.get("duration"),
+                })
         
-        return videos
+        return videos[:max_results]
     
     except Exception as e:
         print(f"Error fetching videos from {channel_id}: {e}")

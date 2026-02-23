@@ -9,12 +9,6 @@ youtube:
     - id: "UCXgGY0wkgOzynnHvSEVmE3A"  # Fireship
       name: "Fireship"
       category: "Tech"
-    - id: "UC2uT9Btm4feM4rN5fNU1Tcw"  # Lex Fridman
-      name: "Lex Fridman"
-      category: "AI/Tech"
-    - id: "UC2JMM4NhYAxWdbYkAmlXjag"  # Huberman Lab
-      name: "Huberman Lab"
-      category: "Science/Health"
 
 podcasts:
   - rss: "https://feeds.simplecast.com/dHoohVNH"
