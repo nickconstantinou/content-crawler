@@ -26,7 +26,7 @@ def call_minimax(prompt: str, system_prompt: str = "You are a helpful assistant.
     }
     
     data = {
-        "model": "MiniMax-Text-01",
+        "model": "MiniMax-M2.5",
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": prompt}
