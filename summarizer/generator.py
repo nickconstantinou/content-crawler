@@ -7,7 +7,7 @@ from pathlib import Path
 
 # MiniMax API configuration
 MINIMAX_API_KEY = os.getenv("MINIMAX_API_KEY", "")
-MINIMAX_BASE_URL = "https://api.minimax.chat/v1"
+MINIMAX_BASE_URL = "https://api.minimax.io/anthropic/v1"
 
 
 def call_minimax(prompt: str, system_prompt: str = "You are a helpful assistant.") -> str:
@@ -18,7 +18,7 @@ def call_minimax(prompt: str, system_prompt: str = "You are a helpful assistant.
         print("Warning: MINIMAX_API_KEY not set, using mock response")
         return "Summary not available (no API key)"
     
-    url = f"{MINIMAX_BASE_URL}/text/chatcompletion_v2"
+    url = f"{MINIMAX_BASE_URL}/messages"
     
     headers = {
         "Authorization": f"Bearer {MINIMAX_API_KEY}",
@@ -39,7 +39,16 @@ def call_minimax(prompt: str, system_prompt: str = "You are a helpful assistant.
         response = requests.post(url, headers=headers, json=data, timeout=60)
         response.raise_for_status()
         result = response.json()
-        return result["choices"][0]["message"]["content"]
+        
+        # MiniMax response format: result["content"][0]["text"]
+        content = result.get("content", [])
+        if content and isinstance(content, list):
+            # Find the text content (skip thinking)
+            for item in content:
+                if item.get("type") == "text":
+                    return item.get("text", "")
+        
+        return "No summary available"
     except Exception as e:
         print(f"Error calling MiniMax: {e}")
         return "Summary not available"
