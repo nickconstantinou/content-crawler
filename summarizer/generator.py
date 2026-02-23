@@ -14,17 +14,30 @@ except ImportError:
 
 def convert_markdown_to_html(text: str) -> str:
     """Convert markdown text to HTML"""
-    if not HAS_MARKDOWN:
-        # Fallback: simple replacements
-        text = text.replace('# ', '<h1>').replace('\n# ', '</h1><h1>')
-        text = text.replace('## ', '<h2>').replace('\n## ', '</h2><h2>')
-        text = text.replace('### ', '<h3>').replace('\n### ', '</h3><h3>')
-        text = text.replace('**', '<strong>', 1).replace('**', '</strong>')
-        text = text.replace('- ', '<li>')
-        text = text.replace('\n\n', '</p><p>')
-        return f'<p>{text}</p>'
+    import re
     
-    return markdown.markdown(text, extensions=['extra', 'nl2br'])
+    # Headers (must do before bold)
+    text = re.sub(r'^### (.+)$', r'<h3>\1</h3>', text, flags=re.MULTILINE)
+    text = re.sub(r'^## (.+)$', r'<h2>\1</h2>', text, flags=re.MULTILINE)
+    text = re.sub(r'^# (.+)$', r'<h1>\1</h1>', text, flags=re.MULTILINE)
+    
+    # Bold
+    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+    
+    # Lists
+    text = re.sub(r'^- (.+)$', r'<li>\1</li>', text, flags=re.MULTILINE)
+    
+    # Paragraphs - split by double newlines
+    parts = text.split('\n\n')
+    html_parts = []
+    for part in parts:
+        part = part.strip()
+        if part.startswith('<h') or part.startswith('<li>') or part.startswith('<ul>'):
+            html_parts.append(part)
+        elif part:
+            html_parts.append(f'<p>{part}</p>')
+    
+    return '\n\n'.join(html_parts)
 
 # MiniMax API configuration
 MINIMAX_API_KEY = os.getenv("MINIMAX_API_KEY", "")
