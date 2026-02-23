@@ -1,14 +1,12 @@
 # Content Sources Configuration
-# Channel IDs found via Playwright
+# Channel IDs found via Playwright + Podcast RSS feeds
 
 youtube:
   channels:
-    # Working channels ✅
+    # Working YouTube channels ✅
     - id: "UCXgGY0wkgOzynnHvSEVmE3A"  # Fireship
       name: "Fireship"
       category: "Tech"
-    
-    # Found via Playwright ✅
     - id: "UCxoRKax_0vHaulMbceZtAwA"  # My First Million
       name: "My First Million"
       category: "Tech/Business"
@@ -19,18 +17,24 @@ youtube:
       name: "Lex Fridman"
       category: "AI/Tech"
 
-    # These need more work to find:
-    # - @LennysPodcast, @hubermanlab, @NavalR
-    # - @TheDailyGwei, @GregIsenberg, @timferriss
-    # - @thepkddietitian, @peterattiamd
-
 podcasts:
+  # Working RSS feeds ✅
   - rss: "https://feeds.simplecast.com/dHoohVNH"
     name: "Lex Fridman"
     category: "AI/Tech"
   - rss: "https://feeds.megaphone.fm/darknetdiaries"
     name: "Darknet Diaries"
     category: "Cybersecurity"
+  - rss: "https://feeds.megaphone.fm/lexpodcustom"
+    name: "Acquired"
+    category: "Business/Tech"
+  - rss: "https://feeds.simplecast.com/By4G13nX"
+    name: "Bankless Podcast"
+    category: "Crypto"
+  # Need to verify:
+  # - Huberman Lab: https://podcasts.apple.com/podcast/id1455210288
+  # - Peter Attia: https://peterattiapodcast.com/feed/
+  # - Tim Ferriss: https://feeds.feedburner.com/TimFerrissShow
 
 news:
   - url: "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=5"
