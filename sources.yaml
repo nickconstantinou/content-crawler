@@ -35,6 +35,9 @@ podcasts:
   - rss: "https://feeds.feedburner.com/TimFerrissShow"
     name: "Tim Ferriss Show"
     category: "Productivity/Interview"
+  - rss: "https://feeds.megaphone.fm/HS2300184645"
+    name: "My First Million"
+    category: "Tech/Business"
 
 news:
   - url: "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=5"
