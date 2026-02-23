@@ -1,0 +1,39 @@
+# Content Sources Configuration
+# Easy to add new sources - just edit this file!
+
+youtube:
+  channels:
+    - id: "UCCRxYlYOmLE2l5wxs3ckJtg"  # Limitless
+      name: "Limitless"
+      category: "AI News"
+    - id: "UCXgGY0wkgOzynnHvSEVmE3A"  # Fireship
+      name: "Fireship"
+      category: "Tech"
+    - id: "UC2uT9Btm4feM4rN5fNU1Tcw"  # Lex Fridman
+      name: "Lex Fridman"
+      category: "AI/Tech"
+    - id: "UC2JMM4NhYAxWdbYkAmlXjag"  # Huberman Lab
+      name: "Huberman Lab"
+      category: "Science/Health"
+
+podcasts:
+  - rss: "https://feeds.simplecast.com/dHoohVNH"
+    name: "Lex Fridman"
+    category: "AI/Tech"
+  - rss: "https://feeds.megaphone.fm/darknetdiaries"
+    name: "Darknet Diaries"
+    category: "Cybersecurity"
+
+news:
+  - rss: "https://aisecret.us/rss"
+    name: "AI Secret"
+    category: "AI News"
+  - url: "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=5"
+    name: "Hacker News"
+    category: "Tech"
+
+# Settings
+settings:
+  max_videos_per_channel: 3
+  video_chunk_minutes: 10  # Chunk videos into 10min segments
+  max_word_count: 2000     # Max words for summary
