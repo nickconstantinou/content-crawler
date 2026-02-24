@@ -47,7 +47,7 @@ def process_youtube_channel(channel_data: dict, config: dict):
         # Transcribe
         transcript = transcriber.transcribe_video(url, chunks)
         
-        if transcript and len(transcript) > 100:
+        if True:  # Always create post
             # Summarize
             summary = generator.summarize_youtube_video(title, transcript)
             
@@ -64,7 +64,7 @@ def process_youtube_channel(channel_data: dict, config: dict):
             filepath = blog_generator.save_post(filename, html)
             
             # Add to posts.js
-            url_path = f"blog/_posts/{filename}"
+            url_path = f"{filename}"
             updater.add_to_posts_js(
                 title=title,
                 url=url_path,
@@ -127,7 +127,7 @@ def process_news(news_data: dict):
     blog_generator.save_post(filename, html)
     
     # Add to posts.js
-    url_path = f"blog/_posts/{filename}"
+    url_path = f"{filename}"
     updater.add_to_posts_js(
         title=f"{name} News Round-up",
         url=url_path,
