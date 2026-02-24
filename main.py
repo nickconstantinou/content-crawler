@@ -63,6 +63,15 @@ def process_youtube_channel(channel_data: dict, config: dict):
             # Save post
             filepath = blog_generator.save_post(filename, html)
             
+            # Also save to Obsidian vault
+            blog_generator.save_to_obsidian(
+                title=title,
+                summary=summary,
+                category=category,
+                video_url=url,
+                date=datetime.now().strftime("%Y-%m-%d")
+            )
+            
             # Add to posts.js
             url_path = f"{filename}"
             updater.add_to_posts_js(

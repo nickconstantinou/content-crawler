@@ -153,6 +153,55 @@ def save_post(filename: str, content: str, posts_dir: Path = None):
     return filepath
 
 
+# Obsidian vault path
+OBSIDIAN_VAULT = Path("/home/openclaw/obsidian/vault/Daily Notes")
+
+
+def save_to_obsidian(title: str, summary: str, category: str, video_url: str = None, date: str = None):
+    """Save post as Markdown to Obsidian vault Daily Notes"""
+    if date is None:
+        date = datetime.now().strftime("%Y-%m-%d")
+    
+    # Create slug from title
+    slug = slugify(title)[:50]
+    filename = f"{date}-{slug}.md"
+    
+    # Determine type based on category
+    post_type = "behind-the-scenes" if "behind" in category.lower() else "blog"
+    
+    # Create markdown with frontmatter
+    md_content = f"""---
+date: {date}
+type: {post_type}
+title: "{title}"
+---
+
+# {title}
+
+{summary}
+"""
+    
+    if video_url:
+        md_content += f"\n[Watch on YouTube]({video_url})\n"
+    
+    # Save to Obsidian
+    OBSIDIAN_VAULT.mkdir(parents=True, exist_ok=True)
+    filepath = OBSIDIAN_VAULT / filename
+    
+    # Avoid overwriting if exists
+    counter = 1
+    while filepath.exists():
+        filename = f"{date}-{slug}-{counter}.md"
+        filepath = OBSIDIAN_VAULT / filename
+        counter += 1
+    
+    with open(filepath, "w") as f:
+        f.write(md_content)
+    
+    print(f"  📓 Saved to Obsidian: {filename}")
+    return filepath
+
+
 if __name__ == "__main__":
     # Test
     test_summary = """This is a test summary of a YouTube video about AI agents.
