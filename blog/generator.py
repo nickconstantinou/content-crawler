@@ -10,7 +10,7 @@ from typing import Dict, Optional
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from summarizer.generator import convert_markdown_to_html
 
-BLOG_DIR = Path("/home/openclaw/openclaw-workspace/personal-blog")
+BLOG_DIR = Path("/home/openclaw/.openclaw/workspace/projects/personal-blog")
 POSTS_DIR = BLOG_DIR  # Posts go in ROOT, not blog/_posts/
 
 
@@ -158,13 +158,15 @@ OBSIDIAN_VAULT = Path("/home/openclaw/obsidian/vault/Daily Notes")
 
 
 def save_to_obsidian(title: str, summary: str, category: str, video_url: str = None, date: str = None):
-    """Save post as Markdown to Obsidian vault Daily Notes"""
+    """Save post as Markdown to Obsidian vault Daily Notes
+    
+    If a post with the same title already exists (any date), update it instead of creating duplicates.
+    """
     if date is None:
         date = datetime.now().strftime("%Y-%m-%d")
     
     # Create slug from title
     slug = slugify(title)[:50]
-    filename = f"{date}-{slug}.md"
     
     # Determine type based on category
     post_type = "behind-the-scenes" if "behind" in category.lower() else "blog"
@@ -186,19 +188,24 @@ title: "{title}"
     
     # Save to Obsidian
     OBSIDIAN_VAULT.mkdir(parents=True, exist_ok=True)
-    filepath = OBSIDIAN_VAULT / filename
     
-    # Avoid overwriting if exists
-    counter = 1
-    while filepath.exists():
-        filename = f"{date}-{slug}-{counter}.md"
+    # Check if a file with this slug already exists (any date) - if so, update it
+    existing_files = list(OBSIDIAN_VAULT.glob(f"*-{slug}.md"))
+    
+    if existing_files:
+        # Update existing file instead of creating duplicate
+        filepath = existing_files[0]
+        # Also update the date in frontmatter
+        md_content = md_content.replace(f"date: {filepath.stem[:10]}", f"date: {date}")
+    else:
+        # New file
+        filename = f"{date}-{slug}.md"
         filepath = OBSIDIAN_VAULT / filename
-        counter += 1
     
     with open(filepath, "w") as f:
         f.write(md_content)
     
-    print(f"  📓 Saved to Obsidian: {filename}")
+    print(f"  📓 Saved to Obsidian: {filepath.name}")
     return filepath
 
 

@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
-BLOG_DIR = Path("/home/openclaw/openclaw-workspace/personal-blog")
+BLOG_DIR = Path("/home/openclaw/.openclaw/workspace/projects/personal-blog")
 POSTS_FILE = BLOG_DIR / "posts.js"
 
 

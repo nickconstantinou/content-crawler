@@ -4,8 +4,13 @@ import subprocess
 import sys
 import re
 import glob
+import logging
 from pathlib import Path
 from typing import List, Optional
+
+# Setup logging
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
 
 USE_WHISPER = False
 
@@ -24,16 +29,18 @@ def cleanup_vtt(text: str) -> str:
 
 
 def transcribe_with_whisper(audio_path: str) -> Optional[str]:
-    """Transcribe audio using whisper (if available)"""
+    """Transcribe audio using faster-whisper"""
     try:
-        import whisper
-        model = whisper.load_model("base")
-        result = model.transcribe(audio_path)
-        return result["text"]
+        from faster_whisper import WhisperModel
+        model_size = "base"
+        model = WhisperModel(model_size, device="cpu", compute_type="int8")
+        segments, info = model.transcribe(audio_path)
+        transcript = " ".join([segment.text for segment in segments])
+        return transcript
     except ImportError:
         return None
     except Exception as e:
-        print(f"Whisper error: {e}")
+        logger.warning(f"Whisper error: {e}")
         return None
 
 
@@ -65,7 +72,7 @@ def transcribe_with_ytdlp(video_url: str) -> Optional[str]:
         return None
     
     except Exception as e:
-        print(f"yt-dlp transcript error: {e}")
+        logger.warning(f"yt-dlp transcript error: {e}")
         return None
 
 
@@ -86,13 +93,13 @@ def transcribe_video(video_url: str, chunk_paths: List[str]) -> str:
     full_transcript = ""
     
     for i, chunk in enumerate(chunk_paths):
-        print(f"Transcribing chunk {i+1}/{len(chunk_paths)}...")
+        logger.info(f"Transcribing chunk {i+1}/{len(chunk_paths)}...")
         text = transcribe_chunk(chunk)
         if text:
             full_transcript += text + "\n"
     
     if not full_transcript.strip():
-        print("Falling back to yt-dlp transcript...")
+        logger.info("Falling back to yt-dlp transcript...")
         full_transcript = transcribe_with_ytdlp(video_url) or ""
     
     return full_transcript
