@@ -12,7 +12,7 @@ from typing import List, Optional
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
-USE_WHISPER = False
+USE_WHISPER = True
 
 
 def cleanup_vtt(text: str) -> str:
