@@ -225,6 +225,9 @@ def process_youtube_channel(channel_data: dict, config: dict, state: dict):
             logger.error(f"Error processing {title}: {e}")
             continue
     
+    # Update state with processed videos
+    state["processed_videos"] = processed_videos
+    
     return len(new_processed)
 
 
@@ -297,6 +300,9 @@ def process_podcast(podcast_data: dict, config: dict, state: dict):
         except Exception as e:
             logger.error(f"Error processing podcast {title}: {e}")
             continue
+    
+    # Update state with processed podcasts
+    state["processed_podcasts"] = processed_podcasts
     
     return len(processed_podcasts) - len(state.get("processed_podcasts", []))
 
@@ -399,6 +405,10 @@ def run_full_crawl():
     
     logger.info("\n" + "=" * 50)
     logger.info(f"✅ Content crawl complete! Processed {new_videos} new videos")
+
+    # Update state with processed videos/podcasts before saving
+    state["processed_videos"] = state.get("processed_videos", [])
+    state["processed_podcasts"] = state.get("processed_podcasts", [])
     
     # Save crawl state
     state["last_crawl"] = datetime.now().isoformat()
