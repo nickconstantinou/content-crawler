@@ -70,7 +70,7 @@ def call_minimax(prompt: str, system_prompt: str = "You are a helpful assistant.
     }
     
     try:
-        response = requests.post(url, headers=headers, json=data, timeout=60)
+        response = requests.post(url, headers=headers, json=data, timeout=120)
         response.raise_for_status()
         result = response.json()
         
