@@ -14,22 +14,22 @@ youtube:
       name: "Lex Fridman"
       category: "AI/Tech"
     # New additions
-    - id: "UCXJj7GF5Eu5h20DXmQTpC7A"  # MKBHD
+    - id: "UCBJycsmduvYEL83R_U4JriQ"  # MKBHD
       name: "MKBHD"
       category: "Tech"
-    - id: "UCPh57E4NT0rZ4GsPaCMJpqA"  # Two Minute Papers
+    - id: "UCbfYPyITQ-7l4upoX8nvctg"  # Two Minute Papers
       name: "Two Minute Papers"
       category: "AI"
     - id: "UC2nK9Rg6ZDB4huJ5sQ8J8J4MQ"  # AI Explained
       name: "AI Explained"
       category: "AI"
-    - id: "UCXuqSBlHAE6UsrMwE8E5E4w"  # Linus Tech Tips
+    - id: "UCXuqSBlHAE6Xw-yeJA0Tunw"  # Linus Tech Tips
       name: "Linus Tech Tips"
       category: "Tech"
     - id: "UCQfwfsi5VrQ8yKZ-UWmAEFg"  # Cold Fusion
       name: "Cold Fusion"
       category: "Tech/Business"
-    - id: "UCuIuO2kR5sMJ9QEoE8a4E7A"  # Coin Bureau
+    - id: "UCqK_GSMbpiV8spgD3ZGloSw"  # Coin Bureau
       name: "Coin Bureau"
       category: "Crypto"
 
