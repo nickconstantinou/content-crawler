@@ -10,7 +10,7 @@ from typing import Dict, Optional
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from summarizer.generator import convert_markdown_to_html
 
-BLOG_DIR = Path("/home/openclaw/.openclaw/workspace/projects/personal-blog")
+BLOG_DIR = Path("/home/openclaw/.openclaw/agents/coding/workspace/projects/personal-blog")
 POSTS_DIR = BLOG_DIR  # Posts go in ROOT, not blog/_posts/
 
 
