@@ -18,7 +18,7 @@ from summarizer import generator
 from blog import generator as blog_generator, updater
 
 YAML_FILE = Path(__file__).parent / "sources.yaml"
-BLOG_DIR = Path("/home/openclaw/.openclaw/workspace/projects/personal-blog")
+BLOG_DIR = Path("/home/openclaw/.openclaw/agents/coding/workspace/projects/personal-blog")
 CRAWL_STATE_FILE = Path("/home/openclaw/.openclaw/workspace/data/crawl-state.json")
 LOG_FILE = Path("/home/openclaw/.openclaw/workspace/data/crawler.log")
 
