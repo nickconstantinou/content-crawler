@@ -421,7 +421,7 @@ def run_full_crawl():
         os.chdir(BLOG_DIR)
         os.system('git add -A')
         os.system('git commit -m "Content crawl: $(date +%Y-%m-%d)" || true')
-        os.system('git push origin master')
+        os.system('git push origin main')
         logger.info("✅ Git push complete")
     except Exception as e:
         logger.error(f"Git push failed: {e}")

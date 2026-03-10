@@ -10,27 +10,34 @@ youtube:
     - id: "UCxoRKax_0vHaulMbceZtAwA"  # My First Million
       name: "My First Million"
       category: "Tech/Business"
-    - id: "UCCRxYlYOmLE2l5wxs3ckJtg"  # Bankless
-      name: "Bankless"  
-      category: "Crypto"
     - id: "UCJIfeSCssxSC_Dhc5s7woww"  # Lex Fridman
       name: "Lex Fridman"
       category: "AI/Tech"
+    # New additions
+    - id: "UCXJj7GF5Eu5h20DXmQTpC7A"  # MKBHD
+      name: "MKBHD"
+      category: "Tech"
+    - id: "UCPh57E4NT0rZ4GsPaCMJpqA"  # Two Minute Papers
+      name: "Two Minute Papers"
+      category: "AI"
+    - id: "UC2nK9Rg6ZDB4huJ5sQ8J8J4MQ"  # AI Explained
+      name: "AI Explained"
+      category: "AI"
+    - id: "UCXuqSBlHAE6UsrMwE8E5E4w"  # Linus Tech Tips
+      name: "Linus Tech Tips"
+      category: "Tech"
+    - id: "UCQfwfsi5VrQ8yKZ-UWmAEFg"  # Cold Fusion
+      name: "Cold Fusion"
+      category: "Tech/Business"
+    - id: "UCuIuO2kR5sMJ9QEoE8a4E7A"  # Coin Bureau
+      name: "Coin Bureau"
+      category: "Crypto"
 
 podcasts:
   # Working RSS feeds ✅
   - rss: "https://feeds.simplecast.com/dHoohVNH"
     name: "Lex Fridman"
     category: "AI/Tech"
-  - rss: "https://feeds.megaphone.fm/darknetdiaries"
-    name: "Darknet Diaries"
-    category: "Cybersecurity"
-  - rss: "https://feeds.megaphone.fm/lexpodcustom"
-    name: "Acquired"
-    category: "Business/Tech"
-  - rss: "https://feeds.simplecast.com/By4G13nX"
-    name: "Bankless Podcast"
-    category: "Crypto"
   # Verified working ✅
   - rss: "https://feeds.feedburner.com/TimFerrissShow"
     name: "Tim Ferriss Show"
@@ -38,14 +45,14 @@ podcasts:
   - rss: "https://feeds.megaphone.fm/HS2300184645"
     name: "My First Million"
     category: "Tech/Business"
-  - rss: "https://rss2.flightcast.com/ordbkc8yojpehffas7vr7qpc.xml"
-    name: "Greg Isenberg - Startup Ideas"
-    category: "Business/Startup"
 
 news:
-  - url: "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=5"
+  - url: "https://news.ycombinator.com/rss"
     name: "Hacker News"
     category: "Tech"
+  - rss: "https://www.fantasyfootballscout.co.uk/feed"
+    name: "Fantasy Football Scout"
+    category: "Sports/FPL"
 
 # Settings
 settings:
