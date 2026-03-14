@@ -1,9 +1,8 @@
 # Content Sources Configuration
-# Channel IDs found via Playwright + Podcast RSS feeds
 
 youtube:
   channels:
-    # Working YouTube channels ✅
+    # Tech/AI
     - id: "UCXgGY0wkgOzynnHvSEVmE3A"  # Fireship
       name: "Fireship"
       category: "Tech"
@@ -13,50 +12,44 @@ youtube:
     - id: "UCJIfeSCssxSC_Dhc5s7woww"  # Lex Fridman
       name: "Lex Fridman"
       category: "AI/Tech"
-    # New additions
     - id: "UCBJycsmduvYEL83R_U4JriQ"  # MKBHD
       name: "MKBHD"
       category: "Tech"
-    - id: "UCbfYPyITQ-7l4upoX8nvctg"  # Two Minute Papers
-      name: "Two Minute Papers"
-      category: "AI"
-    - id: "UC2nK9Rg6ZDB4huJ5sQ8J8J4MQ"  # AI Explained
-      name: "AI Explained"
-      category: "AI"
-    - id: "UCXuqSBlHAE6Xw-yeJA0Tunw"  # Linus Tech Tips
-      name: "Linus Tech Tips"
-      category: "Tech"
-    - id: "UCQfwfsi5VrQ8yKZ-UWmAEFg"  # Cold Fusion
-      name: "Cold Fusion"
-      category: "Tech/Business"
-    - id: "UCqK_GSMbpiV8spgD3ZGloSw"  # Coin Bureau
-      name: "Coin Bureau"
-      category: "Crypto"
+    # FPL
+    - id: "UC8043oOKTB4uP8Nq15Kz6bg"  # Planet FPL
+      name: "Planet FPL"
+      category: "FPL"
+    - id: "UCGJ8-xqhOLwyJNuPMsVoQWQ"  # FPL Blackbox
+      name: "FPL Blackbox"
+      category: "FPL"
+    - id: "UCkk58co4Qe1A1GFRPVziSGQ"  # Who got the assist
+      name: "Who got the assist"
+      category: "FPL"
+    - id: "UCtIPFexB6PLKNNl0XH3SKKw"  # FPL Wire
+      name: "FPL Wire"
+      category: "FPL"
+    - id: "UC72QokPHXQ9r98ROfNZmaDw"  # FPL Focal
+      name: "FPL Focal"
+      category: "FPL"
+    - id: "UCcPWnCj5AKC19HaySZjb25g"  # FPL Harry
+      name: "FPL Harry"
+      category: "FPL"
 
 podcasts:
-  # Working RSS feeds ✅
   - rss: "https://feeds.simplecast.com/dHoohVNH"
     name: "Lex Fridman"
     category: "AI/Tech"
-  # Verified working ✅
-  - rss: "https://feeds.feedburner.com/TimFerrissShow"
-    name: "Tim Ferriss Show"
-    category: "Productivity/Interview"
   - rss: "https://feeds.megaphone.fm/HS2300184645"
     name: "My First Million"
     category: "Tech/Business"
 
 news:
-  - url: "https://news.ycombinator.com/rss"
-    name: "Hacker News"
-    category: "Tech"
   - rss: "https://www.fantasyfootballscout.co.uk/feed"
     name: "Fantasy Football Scout"
-    category: "Sports/FPL"
+    category: "FPL"
 
-# Settings
 settings:
-  max_videos_per_channel: 3
+  max_videos_per_channel: 2
   video_chunk_minutes: 1
   max_word_count: 2000
   categories_per_run: 1
